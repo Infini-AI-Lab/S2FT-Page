@@ -109,7 +109,8 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            Sequoia, with scalable, robust and hardware-aware speculative decoding, can support LLMs inference on consumer GPU without any approximation (using 16bit precision and maintaining the original output distribution).  Empirical results show that with Sequoia, we can serve a Llama2-70b on a single RTX-A5000 with TBT (Time between tokens, measuring Average token streaming latency) as low as 0.57s. 
+            Sequoia, with scalable, robust and hardware-aware speculative decoding, can support LLMs inference on consumer GPU without any approximation (using 16bit precision and maintaining the original output distribution).  Empirical results show that, with Sequoia, we can serve a Llama2-70b on a single RTX-A5000 with TBT (Time between tokens, measuring Average token streaming latency) as low as 0.57s.
+            On a single 2080Ti GPU (only 11GB memory), Vicuna-33B can be served with a TBT of 0.87s and InternLM-20B can be served on 4090 with a TBT of 0.17s.
           </p>
         </div>
       </div>
