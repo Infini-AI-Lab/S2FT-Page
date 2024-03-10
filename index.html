@@ -109,8 +109,8 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            Sequoia, with scalable, robust and hardware-aware speculative decoding, can support LLMs inference on consumer GPU without any approximation (using 16bit precision and maintaining the original output distribution).  Empirical results show that, with Sequoia, we can serve a Llama2-70b on a single RTX-A5000 with TBT (Time between tokens, measuring Average token streaming latency) as low as 0.57s.
-            On a single 2080Ti GPU (only 11GB memory), Vicuna-33B can be served with a TBT of 0.87s and InternLM-20B can be served on 4090 with a TBT of 0.17s.
+            Sequoia, with scalable, robust and hardware-aware speculative decoding, can support LLMs inference on consumer GPU without any approximation (using 16bit precision and maintaining the original output distribution).  Empirical results show that, with Sequoia, we can serve a Llama2-70b on a single RTX-4090 with TBT (Time between tokens, measuring Average token streaming latency) as low as 0.57s.
+            On a single 2080Ti GPU (only 11GB memory), Vicuna-33B can be served with a TBT of 0.87s.
           </p>
         </div>
          <div class="figure">
@@ -178,7 +178,7 @@
     <th>TBT(s)</th>
     <th>Baseline(s)</th>
   </tr>
-  <tr>
+<!--   <tr>
     <th>A5000</th>
     <td>31.5</td>
     <td>Llama2-70B</td>
@@ -193,7 +193,7 @@
     <td><a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-7b-llama">InternLM-7B</a></td>
     <td>0.19</td>
     <td>0.82</td>
-  </tr>
+  </tr> -->
 <tr>
     <th>4090</th>
     <td>31.5</td>
