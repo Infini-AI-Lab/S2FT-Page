@@ -267,14 +267,6 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
             on GPU. Given the available draft model, <i>Sequoia</i> puts as many layers as possible into HBM and leaves the rest offloaded to CPU RAM.
           </p>
         </div>
-        <div class="figure">
-  <img
-    src="static/images/systemoverview.png"
-    alt="<i>Sequoia</i> System Overview"
-    width="800"
-    height="450" />
-  <p><i>Sequoia</i> System Overview</p>
-</div>
       </div>
     </div>
   </div>
@@ -293,15 +285,15 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
            is robust in terms of generating temperatures, compared to top-k sampling and sampling with replacement. Secondly, for a given draft / target model pairs, <i>Sequoia</i> leverages a dynamic 
            programming algorithm to search for the optimal tree strcuture, which enables a much faster growth in terms of accepted tokens with a certain speculated budget (i.e. the size of speculated tree).
           </p>
-        </div>
-       <table><tr>
-<td><img src="static/images/robust.jpg" width="400"
-    height="500" border=0></td>
-<td><img src="static/images/scalable.jpg" width="400"
-    height="300" border=0></td>
-</tr></table>
-      </div>
     </div>
+         <div class="figure">
+  <img
+    src="static/images/merged.jpg"
+    alt="<i>Sequoia</i> Robustness and Scalability"
+    width="1000"
+    height="450" />
+  <p>Robustness and Scalability</p>
+</div>
   </div>
 </section>
 <!-- End Why -->
