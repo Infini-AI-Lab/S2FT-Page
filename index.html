@@ -120,8 +120,8 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            We introduce <i>Sequoia</i>, a scalable, robust and hardware-aware speculative decoding framework that enables LLMs (70B, 33B...) serving with a reasonable latency on consumer GPU without any approximation (using <b>16bit</b> precision and maintaining the original output distribution). We show below that <i>Sequoia</i> can serve a <b>Llama2-70B</b> on a single <b>RTX-4090</b> with TBT (Time between tokens, measuring Average token streaming latency) as low as <b>0.57s</b>, which is <b>8X</b> faster than
-            highly optimized offloading serving system. On a single <b>2080Ti</b> GPU (only 11GB memory), <b>Vicuna-33B</b> can be served with a TBT of <b>0.87s</b>.
+            We introduce <i>Sequoia</i>, a scalable, robust and hardware-aware speculative decoding framework that enables serving LLMs (70B, 33B...) with a reasonable latency on consumer GPUs without any approximation (using <b>16bit</b> precision and maintaining the original output distribution). We show below that <i>Sequoia</i> can serve a <b>Llama2-70B</b> on a single <b>RTX-4090</b> with an average time between tokens (TBT) as low as <b>0.57s</b>, which is <b>8X</b> faster than
+            a highly optimized offloading serving system. On a single <b>2080Ti</b> GPU (only 11GB memory), <b>Vicuna-33B</b> can be served with a TBT of <b>0.87s</b>.
           </p>
         </div>
       </div>
@@ -229,11 +229,11 @@
 </tr>
 </table>
           <p>
-            <i>Sequoia</i> can benefit various LLM serving on different hardware. We evaluate <i>Sequoia</i> with LLMs of various size, including 
-            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-70b-chat-hf">Llama2-70B(chat)</a>, <a style="color: skyblue" href="https://huggingface.co/lmsys/vicuna-33b-v1.3">Vicuna-33B</a>,
+            <i>Sequoia</i> can speed up LLM inference for a variety of model sizes and types of hardware. We evaluate <i>Sequoia</i> with LLMs of various sizes (including 
+            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-70b-chat-hf">Llama2-70B-chat</a>, <a style="color: skyblue" href="https://huggingface.co/lmsys/vicuna-33b-v1.3">Vicuna-33B</a>,
             <a style="color: skyblue" href="https://huggingface.co/nkpz/llama2-22b-daydreamer-v3">Llama2-22B</a>, <a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-20b-llama">InternLM-20B</a> and 
-            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-13b-chat-hf">Llama2-13B(chat)</a>, prompted by <a style="color: skyblue" href="https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/data/mt_bench/question.jsonl">MT-Bench</a>. 
-            The hardware platforms have different GPUs, CPU RAMs and PCIEs. The evaluation results are listed in the table below. Bandwidth refers to the data transfer bandwidth between CPU and GPU, which is determined by equipped PCIE (31.5GB/s for PCIE4X16 and 15.8GB/s for PCIE3x16).
+            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-13b-chat-hf">Llama2-13B-chat</a>), on 4090 and 2080Ti, prompted by <a style="color: skyblue" href="https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/data/mt_bench/question.jsonl">MT-Bench</a>. 
+            The hardware platforms have different GPUs, CPU RAMs and CPU-GPU bandwidth. The evaluation results are listed above.
           </p>
           
   
@@ -263,8 +263,8 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
         <div class="content has-text-justified">
           <p>
             To support LLM inference without any approximation in HBM-limited devices, <i>Sequoia</i> offloads the parameters of those giant models.  
-            To mitigate the slow down caused by offloading, <i>Sequoia</i> applies tree-based speculative decoding with a very large verification budget. Draft models are always running 
-            on GPU. Given the available draft model, <i>Sequoia</i> puts as many layers as possible into HBM and leaves the rest offloaded to CPU RAM.
+            To mitigate the slow down caused by offloading, <i>Sequoia</i> applies tree-based speculative decoding with a very large verification budget. Draft models always run
+            on GPU. Given the draft model, <i>Sequoia</i> puts as many layers of the target model as possible into HBM and leaves the rest offloaded to CPU RAM.
           </p>
         </div>
         <div class="figure">
@@ -292,8 +292,8 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
           <p>
            Benefiting from two key advantages, <i>Sequoia</i> significantly accelerates LLM serving with offloading. Firstly, thanks to sampling without replacement algorithm, <i>Sequoia</i>
            is <b>robust</b> in terms of generating temperatures, compared to top-k sampling and sampling with replacement. Secondly, <i>Sequoia</i> is more <b>scalable</b> with a large speculated budget. For a given draft / target model pairs, <i>Sequoia</i> leverages a dynamic 
-           programming algorithm to search for the optimal tree strcuture, which enables a much faster growth in terms of accepted tokens with a certain budget (i.e. the size of speculated tree).
-           Apart from offloading, <i>Sequoia</i> provides a hardware-aware solution to adjust the size and depth of speculated trees to adapt to different hardware platforms. <i>Sequoia</i> can also benefit LLM inference on data-center GPUs like A100 and L40, which is detailedly discussed in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
+           programming algorithm to search for the optimal tree structure, which enables a much faster growth in terms of accepted tokens with a certain budget (i.e. the size of the speculated tree).
+           Apart from offloading, <i>Sequoia</i> provides a hardware-aware solution to adjust the size and depth of speculated trees to adapt to different hardware platforms. <i>Sequoia</i> can also speed up LLM inference on data-center GPUs like A100 and L40, which is discussed in detail in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
           </p>
     </div>
      <div class="figure">
@@ -318,8 +318,8 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
         <h2 class="title is-3">Conclusion and Future Work</h2>
         <div class="content has-text-justified">
           <p>
-            Leveraging a large speculated budget, everyone can use RTX 4090 or other consumer (low-cost) GPU, e.g., AMD RX7900 with <i>Sequoia</i> to host very strong LLMs like 70B model without approximation, boosting the application of AIGC.
-            In addition, <i>Sequoia</i> scales with compute/IO ratio which has been increasing overtime (e.g., V100, A100 and H100) to accommadate hardware design need. Offloading setting is also simulating the future.
+            Leveraging a large speculated budget, everyone can use RTX 4090 or other consumer (low-cost) GPU, e.g., AMD RX7900 with <i>Sequoia</i> to host very strong LLMs like 70B model without approximation, boosting the applications of AI generated content.
+            In addition, we believe <i>Sequoia</i> will perform particularly well on future hardware, because it’s performance scales well with the compute/bandwidth ratio of the hardware, which has been increasing over time (e.g., V100, A100 and H100).
             Moreover, <i>Sequoia</i>, as a speculative decoding framework which mitigates the gap in the memory hierarchy, adapts to any draft/target pairs and any AI accelerators. We will stay tuned.
           </p>
         </div>
