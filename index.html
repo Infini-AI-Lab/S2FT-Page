@@ -52,7 +52,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Serving LLMs on a single 24GB GPU with Sequoia</h1>
+            <h1 class="title is-1 publication-title">Serving exact Llama2-70B on an RTX4090 <br>with half-second per token latency</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -120,8 +120,7 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            Sequoia, with scalable, robust and hardware-aware speculative decoding, can support LLMs inference on consumer GPU without any approximation (using 16bit precision and maintaining the original output distribution).  Empirical results show that, with Sequoia, we can serve a Llama2-70b on a single RTX-4090 with TBT (Time between tokens, measuring Average token streaming latency) as low as 0.57s.
-            On a single 2080Ti GPU (only 11GB memory), Vicuna-33B can be served with a TBT of 0.87s.
+            We introduce Sequoia, a scalable, robust and hardware-aware speculative decoding framework that enables LLMs (70B, 33B...) serving with a reasonable latency on consumer GPU without any approximation (using 16bit precision and maintaining the original output distribution). We should below that Sequoia can serve a Llama2-70b on a single RTX-4090 with TBT (Time between tokens, measuring Average token streaming latency) as low as 0.57s. On a single 2080Ti GPU (only 11GB memory), Vicuna-33B can be served with a TBT of 0.87s.
           </p>
         </div>
          <div class="figure">
@@ -243,35 +242,7 @@
     <td>TinyLlama-1.1B</td>
     <td>0.09</td>
     <td>0.27</td>
-</tr>
-             
-<tr>
-    <th>3090</th>
-    <td>31.5</td>
-    <td>Vicuna-33B</td>
-    <td>TinyVicuna-1B</td>
-    <td>0.46</td>
-    <td>2.13</td>
-</tr>
-             
-<tr>
-    <th>3090</th>
-    <td>15.8</td>
-    <td>Llama2-70B</td>
-    <td>Llama2-7B</td>
-    <td>1.14</td>
-    <td>9.49</td>
-</tr>
-
-<tr>
-    <th>3090</th>
-    <td>15.8</td>
-    <td>Vicuna-33B</td>
-    <td>TinyVicuna-1B</td>
-    <td>0.72</td>
-    <td>3.67</td>
-</tr>
-
+</tr>        
 <tr>
     <th>2080Ti</th>
     <td>15.8</td>
@@ -324,10 +295,9 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
         <h2 class="title is-3">Conclusion and Future Work</h2>
         <div class="content has-text-justified">
           <p>
-            By leveraging tree-based speculaton with large budget, Sequoia can amortize the cost of loading parameters from CPU RAM. mitigating the gap of 
-            memory hierarchy, which is very important in serving LLMs with HBM-limited GPUs. Noticeably, different hardware configurations of AI accelerators, including accelerators' memory/bandwidth,
-            the bandwidth between CPU and accelerators and the computation power of accelerators will make a difference to Sequoia's deployment and are not fully explored (e.g. the choice of draft models, 
-            the size and depth of speculated trees). Sequoia can also benefit LLM inference on data-center GPUs like A100 and L40, which is detailedly discussed in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
+            Leveraging a large speculated budget, everyone can use RTX 4090 or other consumer (low-cost) GPU, e.g., AMD RX7900 with Sequoia to host very strong LLMs like 70B model without approximation, boosting the application of AIGC.
+            In addition, Sequoia scales with compute/IO ratio which has been increasing overtime (e.g., V100 &larr A100 &larr H100) to accommadate hardware design need. Offloading setting is also simulating the future. We also notice that Sequoia can also benefit LLM inference on data-center GPUs like A100 and L40, which is detailedly discussed in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
+            Moreover, Sequoia, as a speculative decoding framework which mitigates the gap in the memory hierarchy, adapts to any draft/target pairs and any AI accelerators (not limited to GPU). We will stay tuned.
           </p>
         </div>
       </div>
