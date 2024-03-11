@@ -293,7 +293,7 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
            Benefiting from two key advantages, <i>Sequoia</i> significantly accelerates LLM serving with offloading. Firstly, thanks to sampling without replacement algorithm, <i>Sequoia</i>
            is <b>robust</b> in terms of generating temperatures, compared to top-k sampling and sampling with replacement. Secondly, <i>Sequoia</i> is more <b>scalable</b> with a large speculated budget. For a given draft / target model pairs, <i>Sequoia</i> leverages a dynamic 
            programming algorithm to search for the optimal tree strcuture, which enables a much faster growth in terms of accepted tokens with a certain budget (i.e. the size of speculated tree).
-           Apart from offloading, <i>Sequoia</i> provides a hardware-aware solution to adjust the size and depth of speculated trees to adapt to different hardware platforms. <i>Sequoia</i> can also benefit LLM inference on data-center GPUs like A100 and L40, which is detailedly discussed in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a> 
+           Apart from offloading, <i>Sequoia</i> provides a hardware-aware solution to adjust the size and depth of speculated trees to adapt to different hardware platforms. <i>Sequoia</i> can also benefit LLM inference on data-center GPUs like A100 and L40, which is detailedly discussed in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
           </p>
     </div>
      <div class="figure">
