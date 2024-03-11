@@ -143,13 +143,6 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Serving Solutions by Sequoia</h2>
         <div class="content has-text-justified">
-          <p>
-            Sequoia can benefit various LLM serving on different hardware. We evaluate Sequoia with LLMs of various size, including 
-            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-70b-chat-hf">Llama2-70B(chat)</a>, <a style="color: skyblue" href="https://huggingface.co/lmsys/vicuna-33b-v1.3">Vicuna-33B</a>,
-            <a style="color: skyblue" href="https://huggingface.co/nkpz/llama2-22b-daydreamer-v3">Llama2-22B</a>, <a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-20b-llama">InternLM-20B</a> and 
-            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-13b-chat-hf">Llama2-13B(chat)</a>, prompted by <a style="color: skyblue" href="https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/data/mt_bench/question.jsonl">MT-Bench</a>. 
-            The hardware platforms have different GPUs, CPU RAMs and PCIEs. The evaluation results are listed in the table below. Bandwidth refers to the data transfer bandwidth between CPU and GPU, which is determined by equipped PCIE (31.5GB/s for PCIE4X16 and 15.8GB/s for PCIE3x16).
-          </p>
            <table>
   <caption>Serving Solutions by Sequoia</caption>
   <tr>
@@ -169,7 +162,7 @@
     <td>4.59</td>
   </tr>
 <tr>
-    <th>A5000</th>
+<th>A5000</th>
     <td>31.5</td>
     <td>InternLM-20B</td>
     <td><a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-7b-llama">InternLM-7B</a></td>
@@ -215,7 +208,7 @@
     <td>TinyLlama-1.1B</td>
     <td>0.09</td>
     <td>0.27</td>
-</tr>        
+</tr>    
 <tr>
     <th>2080Ti</th>
     <td>15.8</td>
@@ -233,7 +226,6 @@
     <td>0.53</td>
     <td>3.04</td>
 </tr>
-
 <tr>
     <th>2080Ti</th>
     <td>15.8</td>
@@ -243,6 +235,15 @@
     <td>1.53</td>
 </tr>
 </table>
+          <p>
+            Sequoia can benefit various LLM serving on different hardware. We evaluate Sequoia with LLMs of various size, including 
+            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-70b-chat-hf">Llama2-70B(chat)</a>, <a style="color: skyblue" href="https://huggingface.co/lmsys/vicuna-33b-v1.3">Vicuna-33B</a>,
+            <a style="color: skyblue" href="https://huggingface.co/nkpz/llama2-22b-daydreamer-v3">Llama2-22B</a>, <a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-20b-llama">InternLM-20B</a> and 
+            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-13b-chat-hf">Llama2-13B(chat)</a>, prompted by <a style="color: skyblue" href="https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/data/mt_bench/question.jsonl">MT-Bench</a>. 
+            The hardware platforms have different GPUs, CPU RAMs and PCIEs. The evaluation results are listed in the table below. Bandwidth refers to the data transfer bandwidth between CPU and GPU, which is determined by equipped PCIE (31.5GB/s for PCIE4X16 and 15.8GB/s for PCIE3x16).
+          </p>
+          
+  
 <p>
 Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and without Sequoia). The video is processed at 8x speed. 
 </p>
