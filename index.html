@@ -254,34 +254,6 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
 </section>
 <!-- End Solutions -->
   
-<!-- System -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">System Overview</h2>
-        <div class="content has-text-justified">
-          <p>
-            To support LLM inference without any approximation in HBM-limited devices, <i>Sequoia</i> offloads the parameters of those giant models.  
-            To mitigate the slow down caused by offloading, <i>Sequoia</i> applies tree-based speculative decoding with a very large verification budget. Draft models always run
-            on GPU. Given the draft model, <i>Sequoia</i> puts as many layers of the target model as possible into HBM and leaves the rest offloaded to CPU RAM.
-          </p>
-        </div>
-        <div class="figure">
-  <img
-    src="static/images/systemoverview.png"
-    alt="<i>Sequoia</i> System Overview"
-    width="800"
-    height="450" />
-  <p><i>Sequoia</i> System Overview</p>
-</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End System -->
-
 <!-- Why -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
