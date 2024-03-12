@@ -120,7 +120,7 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            We introduce <i>Sequoia</i>, a scalable, robust and hardware-aware speculative decoding framework that enables serving LLMs (70B, 33B...) with a reasonable latency on consumer GPUs without any approximation (using <b>16bit</b> precision and maintaining the original output distribution). We show below that <i>Sequoia</i> can serve a <b>Llama2-70B</b> on a single <b>RTX-4090</b> with an average time between tokens (TBT) as low as <b>0.57s</b>, which is <b>8X</b> faster than
+            We introduce <i>Sequoia</i>, a scalable, robust and hardware-aware speculative decoding framework that enables serving LLMs (70B, 33B...) with a reasonable latency on consumer GPUs without any approximation (using <b>16bit</b> precision and maintaining the original output distribution). Addressing the problems of robustness and scalability of previous works on speculative decoding, we show below that <i>Sequoia</i>, with a large speculated budget, can serve a <b>Llama2-70B</b> on a single <b>RTX-4090</b> with an average time between tokens (TBT) as low as <b>0.57s</b>, which is <b>8X</b> faster than
             a highly optimized offloading serving system, <b>9X</b> faster than DeepSpeed-Zero Offloading. On a single <b>2080Ti</b> GPU (only 11GB memory), <b>Vicuna-33B</b> can be served with a TBT of <b>0.87s</b>.
           </p>
         </div>
