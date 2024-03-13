@@ -120,7 +120,7 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            We introduce <i>Sequoia</i>, a scalable, robust and hardware-aware speculative decoding framework that enables serving LLMs (70B, 33B...) with a reasonable latency on consumer GPUs without any approximation (using <b>16bit</b> precision and maintaining the original output distribution). Addressing the problems of robustness and scalability of previous works on speculative decoding, we show below that <i>Sequoia</i>, with a large speculated budget, can serve a <b>Llama2-70B</b> on a single <b>RTX-4090</b> with an average time between tokens (TBT) as low as <b>0.57s</b>, which is <b>8X</b> faster than
+            We introduce <i>Sequoia</i>, a scalable, robust and hardware-aware speculative decoding framework that enables serving LLMs (70B, 33B...) with a reasonable latency on consumer GPUs without any approximation (using <b>16bit</b> precision and maintaining the original output distribution). Addressing the problems of robustness and scalability of previous works on speculative decoding, we show below that <i>Sequoia</i>, with a large speculation budget, can serve a <b>Llama2-70B</b> on a single <b>RTX-4090</b> with an average time between tokens (TBT) as low as <b>0.57s</b>, which is <b>8X</b> faster than
             a highly optimized offloading serving system, <b>9X</b> faster than DeepSpeed-Zero Offloading. On a single <b>2080Ti</b> GPU (only 11GB memory), <b>Vicuna-33B</b> can be served with a TBT of <b>0.87s</b>.
           </p>
         </div>
@@ -263,9 +263,9 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
         <div class="content has-text-justified">
           <p>
            Benefiting from two key advantages, <i>Sequoia</i> significantly accelerates LLM serving with offloading. Firstly, thanks to sampling without replacement algorithm, <i>Sequoia</i>
-           is <b>robust</b> in terms of generating temperatures, compared to top-k sampling and sampling with replacement. Secondly, <i>Sequoia</i> is more <b>scalable</b> with a large speculated budget. For a given draft / target model pairs, <i>Sequoia</i> leverages a dynamic 
-           programming algorithm to search for the optimal tree structure, which enables a much faster growth in terms of accepted tokens with a certain budget (i.e. the size of the speculated tree).
-           Apart from offloading, <i>Sequoia</i> provides a hardware-aware solution to adjust the size and depth of speculated trees to adapt to different hardware platforms. <i>Sequoia</i> can also speed up LLM inference on data-center GPUs like A100 and L40, which is discussed in detail in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
+           is <b>robust</b> in terms of generating temperatures, compared to top-k sampling and sampling with replacement. Secondly, <i>Sequoia</i> is more <b>scalable</b> with a large speculation budget. For a given draft / target model pairs, <i>Sequoia</i> leverages a dynamic 
+           programming algorithm to search for the optimal tree structure, which enables a much faster growth in terms of accepted tokens with a certain budget (i.e. the size of the speculation tree).
+           Apart from offloading, <i>Sequoia</i> provides a hardware-aware solution to adjust the size and depth of speculation trees to adapt to different hardware platforms. <i>Sequoia</i> can also speed up LLM inference on data-center GPUs like A100 and L40, which is discussed in detail in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
           </p>
     </div>
      <div class="figure">
@@ -274,7 +274,7 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
     alt="Robustness and Scalability"
     width="800"
     height="400" />
-  <p><b>Left (Scalability):</b> Handcrafted tree structures do not scale well with large speculation budget.<br><b>Right (Robustness):</b> The total acceptance rate of 5 speculated tokens. Sampling with replacement (SpecTr) fails when temperature is low and Top-k sampling fails with high temperature. <i>Sequoia</i>, leveraging sampling without replacement, attains the highest acceptance rate. 
+  <p><b>Left (Scalability):</b> Handcrafted tree structures do not scale well with large speculation budget.<br><b>Right (Robustness):</b> The total acceptance rate of 5 speculation tokens. Sampling with replacement (SpecTr) fails when temperature is low and Top-k sampling fails with high temperature. <i>Sequoia</i>, leveraging sampling without replacement, attains the highest acceptance rate. 
   <br>
   <div class="figure">
   <p><br>Below we show two examples of tree structures in <i>Sequoia</i>. The left one has 64 nodes which is suitable for on-chip inference and the right one has 768 nodes, suitable for offloading settings.
@@ -300,7 +300,7 @@ Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and with
         <h2 class="title is-3">Conclusion and Future Work</h2>
         <div class="content has-text-justified">
           <p>
-            Leveraging a large speculated budget, everyone can use RTX 4090 or other consumer (low-cost) GPU, e.g., AMD RX7900 with <i>Sequoia</i> to host very strong LLMs like 70B model without approximation, boosting the applications of AI generated content.
+            Leveraging a large speculation budget, everyone can use RTX 4090 or other consumer (low-cost) GPU, e.g., AMD RX7900 with <i>Sequoia</i> to host very strong LLMs like 70B model without approximation, boosting the applications of AI generated content.
             In addition, we believe <i>Sequoia</i> will perform particularly well on future hardware, because it’s performance scales well with the compute/bandwidth ratio of the hardware, which has been increasing over time (e.g., V100, A100 and H100).
             Moreover, <i>Sequoia</i>, as a speculative decoding framework which mitigates the gap in the memory hierarchy, adapts to any draft/target pairs and any AI accelerators. We will stay tuned with hardware community.
           </p>
