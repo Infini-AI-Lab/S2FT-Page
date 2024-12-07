@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="Serving LLMs on an RTX4090 with Sequoia">
-  <meta property="og:title" content="Sequoia"/>
-  <meta property="og:description" content="Serving Llama2-70B on an RTX4090 with Sequoia"/>
-  <meta property="og:url" content="https://dreaming-panda.github.io/Sequoia-Webpage/"/>
+  <meta name="description" content="Efficient, Scalable and Generalizable LLM Fine-tuning with S<sup>2</sup>FT">
+  <meta property="og:title" content="S<sup>2</sup>FT" />
+  <meta property="og:description" content="Efficient, Scalable and Generalizable LLM Fine-tuning with S<sup>2</sup>FT" />
+  <meta property="og:url" content="https://dreaming-panda.github.io/Sequoia-Webpage/" />
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/images/proj_fig.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image" content="static/images/logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
 
-  <meta name="twitter:title" content="Sequoia">
-  <meta name="twitter:description" content="Serving Llama2-70B on an RTX4090 with Sequoia">
+  <meta name="twitter:title" content="S<sup>2</sup>FT">
+  <meta name="twitter:description" content="Efficient, Scalable and Generalizable LLM Fine-tuning with S<sup>2</sup>FT">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/proj_fig.png">
+  <meta name="twitter:image" content="static/images/logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="Speculative Decoding">
+  <meta name="keywords" content="LLM; PEFT">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
   <title>Serving LLMs on an RTX4090 with Sequoia</title>
-  <link rel="icon" type="image/x-icon" href="static/images/colorful_sequoia.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="static/images/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -44,6 +43,7 @@
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
 </head>
+
 <body>
 
 
@@ -52,50 +52,56 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title"><i>SEQUOIA</i>: Serving exact Llama2-70B on an RTX4090 <br>with half-second per token latency</h1>
+            <h1 class="title is-1 publication-title">S<sup>2</sup>FT: Efficient, Scalable and Generalizable LLM
+              Fine-tuning by Structured Sparsity</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://dreaming-panda.github.io/" target="_blank">Zhuoming Chen</a><sup>*1</sup>,</span>
-                <span class="author-block">
-                  <a href="https://avnermay.github.io/" target="_blank">Avner May</a><sup>*2</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://www.linkedin.com/in/ruslansv/" target="_blank">Ruslan Svirschevski</a><sup>*3</sup> 
-                  </span> <br>
-               <span class="author-block">
-                    <a href="https://www.linkedin.com/in/yuhsunhuang/" target="_blank">Yuhsun Huang</a><sup>1</sup>,
-                  </span>
+                <a href="https://xinyuyang.me/" target="_blank">Xinyu Yang</a><sup>1</sup>,</span>
               <span class="author-block">
-                    <a href="https://mryab.github.io/" target="_blank">Max Ryabinin</a><sup>2</sup>,
-                  </span>
+                <a href="https://jixuanleng.com/" target="_blank">Jixuan Leng</a><sup>1</sup>,</span>
               <span class="author-block">
-                    <a href="https://www.cs.cmu.edu/~zhihaoj2/" target="_blank"> Zhihao Jia</a><sup>1</sup>,
-                  </span>
+                <a href="https://guochry.github.io/" target="_blank">Geyang Guo</a><sup>2</sup>
+              </span>
               <span class="author-block">
-                    <a href="https://www.andrew.cmu.edu/user/beidic/" target="_blank">Beidi Chen</a><sup>1,4</sup>
-                  </span>
-                  </div>
-                  <div class="is-size-5 publication-authors">
-                    <span class="affliation"><small><sup>1</sup>Carnegie Mellon University <sup>2</sup>Together AI <sup>3</sup>Yandex <sup>4</sup>Meta AI</small></span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+                <a href="https://jiawei-zhao.netlify.app/" target="_blank">Jiawei Zhao</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=80VAi_EAAAAJ&hl=ja" target="_blank">Ryumei
+                  Nakada</a><sup>4</sup>,
+              </span><br>
+              <span class="author-block">
+                <a href="https://linjunz.github.io/index.html" target="_blank">Linjun Zhang</a><sup>4</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.huaxiuyao.io/" target="_blank">Huaxiu Yao</a><sup>5</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.andrew.cmu.edu/user/beidic/" target="_blank">Beidi Chen</a><sup>1</sup>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="affliation"><small><sup>1</sup>Carnegie Mellon University <sup>2</sup>Georgia Tech
+                  <sup>3</sup>Caltech <sup>4</sup>Rutgers <sup>5</sup>UNC-Chapel Hill</small></span>
+              <span class="eql-cntrb"><small><br>xinyuya2, beidic@andrew.cmu.edu</small></span>
+            </div>
 
-                  <div class="column has-text-centered">
-                   
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/Infini-AI-Lab/Sequoia/tree/main" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
+            <div class="column has-text-centered">
 
-                <!-- ArXiv abstract Link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2402.12374" target="_blank"
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/Infini-AI-Lab/Sequoia/tree/main" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <!-- ArXiv abstract Link -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2402.12374" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -108,282 +114,528 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Introduction</h2>
-        <div class="content has-text-justified">
-          <p>
-            We introduce <i>Sequoia</i>, a scalable, robust and hardware-aware speculative decoding framework that enables serving LLMs (70B, 33B...) with a reasonable latency on consumer GPUs without any approximation (using <b>16bit</b> precision and maintaining the original output distribution). Addressing the problems of robustness and scalability of previous works on speculative decoding, we show below that <i>Sequoia</i>, with a large speculation budget, can serve a <b>Llama2-70B</b> on a single <b>RTX-4090</b> with an average time between tokens (TBT) as low as <b>0.57s</b>, which is <b>8X</b> faster than
-            a highly optimized offloading serving system, <b>9X</b> faster than DeepSpeed-Zero Offloading. On a single <b>2080Ti</b> GPU (only 11GB memory), <b>Vicuna-33B</b> can be served with a TBT of <b>0.87s</b>.
-          </p>
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce <u>S</u>tructured <u>S</u>parse
+              <u>F</u>ine-<u>T</u>uning (<b>S<sup>2</sup>FT</b>), the first PEFT method for LLMs that achieves high
+              quality, efficient training, and scalable serving simutaneously.
+              S<sup>2</sup>FT accomplishes this by <b>“selecting sparsely and computing densely”</b>. It selects a few
+              heads and channels in the MHA and FFN modules for each Transformer block,
+              respectively. Next, it co-permutes weight matrices on both sides of the coupled
+              structures in LLMs to connect the selected components in each layer into a dense
+              submatrix. Finally, S<sup>2</sup>FT performs in-place gradient updates on all submatrices.
+              Through theoretical analysis and empirical results, our method prevents overfitting
+              and forgetting, delivers SOTA performance on both commonsense and arithmetic
+              reasoning with <b>4.6%</b> and <b>1.3%</b> average improvements compared to LoRA, and
+              surpasses full FT by <b>11.5%</b> when generalizing to various domains after instruction
+              tuning. Using our partial backpropagation algorithm, S<sup>2</sup>FT saves training memory
+              up to <b>3&times</b> and improves latency by <b>1.5-2.7&times</b> compared to full FT, while delivering
+              about <b>10%</b> improvement over LoRA on both metrics. We further demonstrate
+              that the weight updates in S<sup>2</sup>FT can be decoupled into adapters, enabling effective
+              fusion, fast switch, and efficient parallelism when serving multiple fine-tuned LLMs.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-  
-<!-- Solutions -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Serving Solutions by <i>Sequoia</i></h2>
-        <div class="content has-text-justified">
-           <table>
-  <tr>
-    <th scope="col">GPU</th>
-    <th>Bandwidth(GB/s)</th>
-    <th>Target Model</th>
-    <th>Draft Model</th>
-    <th>TBT(s)</th>
-    <th>Baseline(s)</th>
-  </tr>
-<!--   <tr>
-    <th>A5000</th>
-    <td>31.5</td>
-    <td>Llama2-70B</td>
-    <td><a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-7b-chat-hf">Llama2-7B</a></td>
-    <td>0.58</td>
-    <td>4.59</td>
-  </tr>
-<tr>
-<th>A5000</th>
-    <td>31.5</td>
-    <td>InternLM-20B</td>
-    <td><a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-7b-llama">InternLM-7B</a></td>
-    <td>0.19</td>
-    <td>0.82</td>
-  </tr> -->
-<tr>
-    <th>4090</th>
-    <td>31.5</td>
-    <td>Llama2-70B</td>
-    <td><a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-7b-chat-hf">Llama2-7B</a></td>
-    <td>0.57</td>
-    <td>4.54</td>
-</tr>
-<tr>
-    <th>4090</th>
-    <td>31.5</td>
-    <td>Vicuna-33B</td>
-    <td><a style="color: skyblue" href="https://huggingface.co/Jiayi-Pan/Tiny-Vicuna-1B">TinyVicuna-1B</a></td>
-    <td>0.35</td>
-    <td>1.78</td>
-</tr>          
-<tr>
-    <th>4090</th>
-    <td>31.5</td>
-    <td>Llama2-22B</td>
-    <td><a style="color: skyblue" href="TinyLlama/TinyLlama-1.1B-Chat-v1.0">TinyLlama-1.1B</a></td>
-    <td>0.17</td>
-    <td>0.95</td>
-</tr>
-<tr>
-    <th>4090</th>
-    <td>31.5</td>
-    <td>InternLM-20B</td>
-    <td><a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-7b-llama">InternLM-7B</a></td>
-    <td>0.17</td>
-    <td>0.77</td>
-</tr>
-<tr>
-    <th>4090</th>
-    <td>31.5</td>
-    <td>Llama2-13B</td>
-    <td>TinyLlama-1.1B</td>
-    <td>0.09</td>
-    <td>0.27</td>
-</tr>    
-<tr>
-    <th>2080Ti</th>
-    <td>15.8</td>
-    <td>Vicuna-33B</td>
-    <td>TinyVicuna-1B</td>
-    <td>0.87</td>
-    <td>4.81</td>
-</tr>
+  </section>
+  <!-- End paper abstract -->
 
-<tr>
-    <th>2080Ti</th>
-    <td>15.8</td>
-    <td>Llama2-22B</td>
-    <td>TinyLlama-1.1B</td>
-    <td>0.53</td>
-    <td>3.04</td>
-</tr>
-<tr>
-    <th>2080Ti</th>
-    <td>15.8</td>
-    <td>Llama2-13B</td>
-    <td>TinyLlama-1.1B</td>
-    <td>0.34</td>
-    <td>1.53</td>
-</tr>
+  <!-- Solutions -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Why S<sup>2</sup>FT ?</h2>
+          <div class="content has-text-justified" style="border-bottom: none;">
+            <style>
+              .table-container {
+                width: 100%;
+                max-width: 800px;
+                overflow-x: auto; /* Adds horizontal scroll if needed */
+              }
 
-<tr>
-    <th>A100-SXM4</th>
-    <td>31.5</td>
-    <td>Llama3-70B-Instruct</td>
-    <td>Llama3-8B-Instruct</td>
-    <td>0.38</td>
-    <td>2.64</td>
-</tr>
+              table {
+                width: 100%;
+                max-width: 800px;
+                border-collapse: collapse;
+                text-align: center;
+                margin-top: 20px;
+                border: none;
+                table-layout: fixed;
+                /* Ensures no outer border */
+              }
 
-<tr>
-    <th>A100-SXM4*</th>
-    <td>31.5</td>
-    <td>Llama3-70B-Instruct (T=0.6)</td>
-    <td>Llama3-8B-Instruct</td>
-    <td>0.47</td>
-    <td>5.30</td>
-</tr>
+              th {
+                padding: 10px;
+                position: relative;
+                border: none;
+                /* Removes any borders from <th> */
+              }
 
-<tr>
-    <th>A100-SXM4*</th>
-    <td>31.5</td>
-    <td>Llama3-70B-Instruct (T=0)</td>
-    <td>Llama3-8B-Instruct</td>
-    <td>0.47</td>
-    <td>5.30</td>
-</tr>
-           
-</table>
-          <p>
-            <i>Sequoia</i> can speed up LLM inference for a variety of model sizes and types of hardware. We evaluate <i>Sequoia</i> with LLMs of various sizes (including 
-            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-70b-chat-hf">Llama2-70B-chat</a>, <a style="color: skyblue" href="https://huggingface.co/lmsys/vicuna-33b-v1.3">Vicuna-33B</a>,
-            <a style="color: skyblue" href="https://huggingface.co/nkpz/llama2-22b-daydreamer-v3">Llama2-22B</a>, <a style="color: skyblue" href="https://huggingface.co/chargoddard/internlm2-20b-llama">InternLM-20B</a> and 
-            <a style="color: skyblue" href="https://huggingface.co/meta-llama/Llama-2-13b-chat-hf">Llama2-13B-chat</a>), on 4090 and 2080Ti, prompted by <a style="color: skyblue" href="https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/data/mt_bench/question.jsonl">MT-Bench</a> with temperature=0.6. 
-            The hardware platforms have different GPUs, CPU RAMs and CPU-GPU bandwidth. The evaluation results are listed above. * indicates layer-wise offloading implementations. 
-          </p>
-          
-  
-<p>
-Here we show a demo for Llama2-70B inference on a single RTX-4090 (with and without <i>Sequoia</i>. Video plays at 4X speed).  
-</p>
- <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/Spec_Final4xT.mp4"
-            type="video/mp4">
-          </video>
-  </div>
+              .line-container {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                /* Space between lines */
+                margin-top: 10px;
+              }
+
+              .line {
+                width: 100%;
+                height: 1px;
+                background-color: #000;
+                /* Black lines */
+              }
+            </style>
+            <table>
+              <tr>
+                <th scope="col"></th>
+                <th colspan="2">
+                  High Quality
+                  <div class="line-container">
+                    <div class="line"></div>
+                  </div>
+                </th>
+                <th colspan="2">
+                  Efficient Training
+                  <div class="line-container">
+                    <div class="line"></div>
+                  </div>
+                </th>
+                <th colspan="3">
+                  Scalable Serving
+                  <div class="line-container">
+                    <div class="line"></div>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">ID</th>
+                <th scope="col">OOD</th>
+                <th scope="col">Time</th>
+                <th scope="col">Memory</th>
+                <th scope="col">Fusion</th>
+                <th scope="col">Switch</th>
+                <th scope="col">Parallelism</th>
+              </tr>
+              <tr>
+                <th scope="col">Full FT</th>
+                <th scope="col">&#10004&#10004</th>
+                <th scope="col">&#10004</th>
+                <th scope="col">&#10008</th>
+                <th scope="col">&#10008</th>
+                <th scope="col">&#10008</th>
+                <th scope="col">&#10008</th>
+                <th scope="col">&#10008</th>
+              </tr>
+              <tr>
+                <th scope="col">LoRA</th>
+                <th scope="col">&#10004</th>
+                <th scope="col">&#10008</th>
+                <th scope="col">&#10004</th>
+                <th scope="col">&#10004</th>
+                <th scope="col">&#10004</th>
+                <th scope="col">&#10004</th>
+                <th scope="col">&#10004</th>
+              </tr>
+              <tr>
+                <th scope="col"><b>S<sup>2</sup>FT</b></th>
+                <th scope="col">&#10004</th>
+                <th scope="col">&#10004&#10004</th>
+                <th scope="col">&#10004&#10004</th>
+                <th scope="col">&#10004&#10004</th>
+                <th scope="col">&#10004&#10004</th>
+                <th scope="col">&#10004&#10004</th>
+                <th scope="col">&#10004&#10004</th>
+              </tr>
+
+
+            </table>
+            <p>
+              Compared to LoRA, S<sup>2</sup>FT offers several key advantages: <b>(i) improved OOD performance, (2) enhanced training efficiency (time & memory), (3) better serving scalability (adapter fusion/switch/parallelism)</b>. These features are particularly valuable in real-world PEFT scenarios, where the goal is to effectively combine knowledge from various domains with the base model's capabilities using limited resource. 
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End Solutions -->
-  
-<!-- Why -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Why <i>Sequoia</i></h2>
-        <div class="content has-text-justified">
-          <p>
-           Benefiting from two key advantages, <i>Sequoia</i> significantly accelerates LLM serving with offloading. Firstly, <i>Sequoia</i> is more <b>scalable</b> with a large speculation budget. For a given draft / target model pairs, <i>Sequoia</i> leverages a dynamic 
-           programming algorithm to search for the optimal tree structure, which enables a much faster growth in terms of accepted tokens with a certain budget (i.e. the size of the speculation tree). Secondly, thanks to sampling without replacement algorithm, <i>Sequoia</i>
-           is <b>robust</b> in terms of generating temperatures, compared to top-k sampling and sampling with replacement.
-           Apart from offloading, <i>Sequoia</i> provides a hardware-aware solution to adjust the size and depth of speculation trees to adapt to different hardware platforms. <i>Sequoia</i> can also speed up LLM inference on data-center GPUs like A100 and L40, which is discussed in detail in our  <a style="color: skyblue" href="https://arxiv.org/abs/2402.12374" target="_blank">paper</a>.
-          </p>
-    </div>
-     <div class="figure">
-  <img
-    src="static/images/rssmerge.jpg"
-    alt="Robustness and Scalability"
-    width="800"
-    height="400" />
-  <p><b>Left (Scalability):</b> Handcrafted tree structures do not scale well with large speculation budget.<br><b>Right (Robustness):</b> The total acceptance rate of 5 speculation tokens. Sampling with replacement (SpecTr) fails when temperature is low and Top-k sampling fails with high temperature. <i>Sequoia</i>, leveraging sampling without replacement, attains the highest acceptance rate. 
-  <br>
-  <div class="figure">
-  <p><br>Below we show two examples of tree structures in <i>Sequoia</i>. The left one has 64 nodes which is suitable for on-chip inference and the right one has 768 nodes, suitable for offloading settings.
-  We append more budget to nodes in previous layers with a higher probability to get accepted.</p>
-  <img
-    src="static/images/treemerge.jpg"
-    alt="Tree Shape"
-    width="800"
-    height="400" />
-</div>
-        
-    </div>
-  </div>
-  </div>
-</section>
-<!-- End Why -->
-  
-<!-- Discussion -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Conclusion and Future Work</h2>
-        <div class="content has-text-justified">
-          <p>
-            Leveraging a large speculation budget, everyone can use RTX 4090 or other consumer (low-cost) GPU, e.g., AMD RX7900 with <i>Sequoia</i> to host very strong LLMs like 70B model without approximation, boosting the applications of AI generated content.
-            In addition, we believe <i>Sequoia</i> will perform particularly well on future hardware, because it’s performance scales well with the compute/bandwidth ratio of the hardware, which has been increasing over time (e.g., V100, A100 and H100).
-            Moreover, <i>Sequoia</i>, as a speculative decoding framework which mitigates the gap in the memory hierarchy, adapts to any draft/target pairs and any AI accelerators. We will stay tuned with hardware community.
-          </p>
+  </section>
+  <!-- End Solutions -->
+
+  <!-- Why -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Observation</h2>
+          <div class="content has-text-justified">
+            <p>
+              When generalizing to complex reasoning tasks, the performance ranking emerges as: Sparse Fine-tuning (SpFT) > Full FT > LoRA. SpFT effectively transfers reasoning abilities to commonsense domains, while LoRA exhibits significant performance drops in far OOD generalization. This indicates (i) freezing a larger fraction of base model parameters can retain more pre-trained abilities, and (ii) approximating high-dimensional gradients with low-rank decomposition may overfit fine-tuning data and hinder the model from generalization. Since LLMs are typically pre-trained on high-quality data, SpFT emerges as the preferred choice for fine-tuning on domain-specific data of varying quality.
+            </p>
+          </div>
+          <div class="figure">
+            <img src="static/images/observation.jpg" alt="Robustness and Scalability" width="800" height="400" />
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              Our findings are further supported by a counterintuitive observation when selecting trainable channels in S²FT using different metrics (weight, activation, and gradients). Surprisingly, selecting channels with the smallest activations leads to improved performance, while selecting those with the largest activations/gradients degrades it. This suggests that for LLMs, it is crucial to preserve more task-relevant advanced skills during pre-training when injecting knowledge from fine-tuning data.
+            </p>
+          </div>
+          <table style="border-collapse: collapse; width: 100%; text-align: center;">
+            <tr>
+              <th style="padding: 8px; text-align: left; border-bottom: 2px solid black; border-top: 2px solid black;" rowspan="2">Task</th>
+              <th style="padding: 8px; border-bottom: 1px solid black; border-top: 2px solid black;">S²FT-R</th>
+              <th style="padding: 8px; border-bottom: 1px solid black; border-top: 2px solid black;" colspan="2">S²FT-W</th>
+              <th style="padding: 8px; border-bottom: 1px solid black; border-top: 2px solid black;" colspan="2">S²FT-A</th>
+              <th style="padding: 8px; border-bottom: 1px solid black; border-top: 2px solid black;" colspan="2">S²FT-S</th>
+              <th style="padding: 8px; border-bottom: 1px solid black; border-top: 2px solid black;" colspan="2">S²FT-G</th>
+            </tr>
+            <tr>
+              <th style="padding: 8px; border-bottom: 2px solid black;"></th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Large</th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Small</th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Large</th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Small</th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Large</th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Small</th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Large</th>
+              <th style="padding: 8px; border-bottom: 2px solid black;">Small</th>
+            </tr>
+            <tr>
+              <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee; width: 120px;">Knowledge</td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee; min-width: 80px;">86.6</td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">85.9<sub style="color: red;">(-0.7)</sub></td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">85.3<sub style="color: red;">(-1.3)</sub></td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">84.7<sub style="color: red;">(-1.9)</sub></td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">87.3<sub style="color: green;">(+0.7)</sub></td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">85.1<sub style="color: red;">(-1.5)</sub></td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">87.2<sub style="color: green;">(+0.6)</sub></td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">85.4<sub style="color: red;">(-1.2)</sub></td>
+              <td style="padding: 8px; border-bottom: 1px solid #eee;">86.2<sub style="color: red;">(-0.4)</sub></td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; text-align: left; border-bottom: 2px solid black; width: 120px;">Arithmetic</td>
+              <td style="padding: 8px; border-bottom: 2px solid black; min-width: 80px;">79.6</td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">78.4<sub style="color: red;">(-1.2)</sub></td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">78.4<sub style="color: red;">(-1.2)</sub></td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">77.1<sub style="color: red;">(-2.5)</sub></td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">80.0<sub style="color: green;">(+0.4)</sub></td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">76.8<sub style="color: red;">(-2.8)</sub></td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">79.8<sub style="color: green;">(+0.2)</sub></td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">77.8<sub style="color: red;">(-1.8)</sub></td>
+              <td style="padding: 8px; border-bottom: 2px solid black;">79.5<sub style="color: red;">(-0.1)</sub></td>
+            </tr>
+          </table>
         </div>
-       <div class="figure">
-  <img
-    src="static/images/colorful_sequoia.ico"
-    alt="<i>Sequoia</i>"
-    width="200"
-    height="200" />
-</div>
+      </div>
+  </section>
+  <!-- End Why -->
+
+  <!-- Results -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">S<sup>2</sup>FT and Results</h2>
+          <div class="content has-text-justified">
+            <p class="has-text-left is-size-4">
+              <strong>Method Description</strong>
+            </p>
+            <div class="figure">
+              <img src="static/images/introduction.jpg" alt="S<sup>2</sup>FT"/>
+            </div>
+            <p>
+              First, we sparsely select a few attention heads and channels within the coupled structures of the MHA and FFN modules (see the definition of coupled structures in our paper) as the trainable parameters. Next, we co-permute the weight matrices on both sides of these structures, enabling dense gradient computation only for the selected components. While we demonstrate S<sup>2</sup>FT by selecting the same heads/channels on both sides for clarity, our approach also  supports asymmetric selection strategies.
+            </p>
+          </div>
+          <div class="content has-text-justified">
+            <p class="has-text-left is-size-4">
+              <strong>Results: High Quality</strong>
+            </p>
+            <p>
+              S<sup>2</sup>FT outperforms Full FT, LoRA, and DoRA on both commonsense and arithmetic reasoning tasks.  
+            </p>
+            <div style="width: 100%; max-width: 1000px;">
+              <table style="border-collapse: collapse; width: 100%; text-align: center; margin-bottom: 40px;">
+                <tr>
+                  <td colspan="11" style="padding: 12px; text-align: center; border-bottom: 1px solid #eee; font-weight: bold;">Fine-tuning LLaMA-3-8B on Commonsense Reasoning Tasks</td>
+                </tr>
+                <tr>
+                  <th style="padding: 8px; text-align: left; border-bottom: 2px solid black; width: 11%;">Method</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 9%;">#Param</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">BoolQ</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">PIQA</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">SIQA</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">HellaSwag</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">&nbsp;&nbsp;Wino</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">ARC-e</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">ARC-c</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">OBQA</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">Avg. ↑</th>
+                </tr>
+                <!-- First table rows... -->
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee;">Full FT</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">100</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">73.9</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">86.2</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">79.1</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">93.1</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">85.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">88.1</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">78.2</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">84.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">83.6</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee;">LoRA</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">0.70</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">70.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">85.2</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">79.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">92.5</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">84.9</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">88.9</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">78.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">84.4</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">82.5</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee;">DoRA</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">0.71</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">74.6</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">89.3</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">79.9</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">95.5</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">85.6</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">90.5</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">80.4</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">85.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">85.2</td>
+                </tr>
+                <tr style="background-color: #e6f3ff;">
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee; font-weight: bold;">S<sup>2</sup>FT</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">0.70</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">75.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">89.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">80.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">96.5</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">88.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">92.5</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">83.4</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">87.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">86.6</td>
+                </tr>
+              </table>
+            
+              <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                <tr>
+                  <td colspan="10" style="padding: 12px; text-align: center; border-bottom: 1px solid #eee; font-weight: bold;">Fine-tuning LLaMA-3-8B on Arithmetic Reasoning Tasks</td>
+                </tr>
+                <tr>
+                  <th style="padding: 8px; text-align: left; border-bottom: 2px solid black; width: 11%;">Method</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 9%;">#Param</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 16%;">MultiArith</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">GSM8K</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">AddSub</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">AQuA</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">SingleEq</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">SVAMP</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">MAWPS</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black; width: 8%;">Avg. ↑</th>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee;">Full FT</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">100</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">99.2</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">62.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">93.9</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">26.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">96.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">74.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">91.2</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">77.7</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee;">LoRA</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">0.70</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">99.5</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">61.6</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">92.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">25.6</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">96.3</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">73.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">90.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">77.2</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee;">DoRA</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">0.71</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">98.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">62.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">92.2</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">26.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">96.9</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">74.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">91.2</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">77.5</td>
+                </tr>
+                <tr style="background-color: #e6f3ff;">
+                  <td style="padding: 8px; text-align: left; border-bottom: 1px solid #eee; font-weight: bold;">S<sup>2</sup>FT</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">0.70</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">99.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">65.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">93.7</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">31.5</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">97.8</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">76.0</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">92.4</td>
+                  <td style="padding: 8px; border-bottom: 1px solid #eee;">79.6</td>
+                </tr>
+              </table>
+            </div>   
+          </div>
+          <div class="content has-text-justified">
+            <p class="has-text-left is-size-4">
+              <strong>Results: Efficient Training</strong>
+              <p>
+              S<sup>2</sup>FT delivers an average 10% improvement over LoRA on both training memory and time.
+              </p>
+              <div class="figure">
+                <img src="static/images/training_efficiency.jpg" alt="training efficiency" width="900" height="400" />
+              </div>
+            </p>
+          </div>
+          <div class="content has-text-justified">
+            <p class="has-text-left is-size-4">
+              <strong>Results: Scalable Inference</strong>
+            </p>
+            <p>
+              S<sup>2</sup>FT can modify orthogonal low-rank spaces for different tasks, resulting in effective adpater fusion.
+            </p> 
+            <table style="border-collapse: collapse; width: 100%; text-align: center;">
+              <thead>
+                <tr>
+                  <td colspan="7" style="padding: 12px; text-align: center; border-bottom: 1px solid #eee; font-weight: bold;">Fusing Commonsense and Arithmetic Adapters for LLaMA-3-8B</td>
+                </tr>
+                <tr>
+                  <th style="padding: 8px; text-align: left; border-top: 2px solid black; border-bottom: 2px solid black;" rowspan="2">Task</th>
+                  <th style="padding: 8px; border-top: 2px solid black; border-bottom: 1px solid black;" colspan="3">LoRA</th>
+                  <th style="padding: 8px; border-top: 2px solid black; border-bottom: 1px solid black;" colspan="3">S²FT</th>
+                </tr>
+                <tr>
+                  <th style="padding: 8px; border-bottom: 2px solid black;">Adapter 1</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black;">Adapter 2</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black;">Fused</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black;">Adapter 1</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black;">Adapter 2</th>
+                  <th style="padding: 8px; border-bottom: 2px solid black;">Fused</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 2px solid black;">Commonsense</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">83.1</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black; color: #999;">32.1</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">79.8<sub style="color: red;">(-3.3)</sub></td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">86.6</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black; color: #999;">42.3</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">84.0<sub style="color: red;">(-2.6)</sub></td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; text-align: left; border-bottom: 2px solid black;">Arithmetic</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black; color: #999;">12.0</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">77.2</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">71.6<sub style="color: red;">(-5.6)</sub></td>
+                  <td style="padding: 8px; border-bottom: 2px solid black; color: #999;">12.8</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">79.6</td>
+                  <td style="padding: 8px; border-bottom: 2px solid black;">75.3<sub style="color: red;">(-4.3)</sub></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              S<sup>2</sup>FT enables scalable and efficient adapter switch and parallelism by reducing matmul operations.
+            </p> 
+            <div class="figure">
+              <img src="static/images/scalable_serving.png" alt="scalable serving" width="900" height="400" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Disucssion -->
-  
-<!--BibTex citation -->
+  </section>
+  <!-- Results -->
+
+  <!-- Discussion -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Conclusion and Future Work</h2>
+          <div class="content has-text-justified">
+            <p>
+              This work introduces S<sup>2</sup>FT, a novel PEFT family that simultaneously achieves high quality, efficient training, and scalable serving for LLM fine-tuning. Leveraging S<sup>2</sup>FT, we demonstrate a 10% reduction in training costs while surpassing LoRA in performance. This improvement is particularly impactful for resource savings in large-scale, real-world deployments. Moreover, S<sup>2</sup>FT enhances serving scalability, offering promising potentials for serving thousands of adapters in future applications.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Disucssion -->
+
+  <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@article{chen2024sequoia,
-  title={Sequoia: Scalable, Robust, and Hardware-aware Speculative Decoding},
-  author={Chen, Zhuoming and May, Avner and Svirschevski, Ruslan and Huang, Yuhsun and Ryabinin, Max and Jia, Zhihao and Chen, Beidi},
-  journal={arXiv preprint arXiv:2402.12374},
+      <pre><code>@inproceedings{yang2024s2ft,
+  title={S<sup>2</sup>FT: Efficient, Scalable and Generalizable LLM Fine-tuning by Structured Sparsity},
+  author={Yang, Xinyu and Leng, Jixuan and Guo, Geyang and Zhao, Jiawei and Nakada, Ryumei and Zhang, Linjun and Yao, Huaxiu and Chen, Beidi},
+  booktitle={The 38th Conference on Neural Information Processing Systems (NeurIPS)},
   year={2024}
 }</code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
+  </section>
+  <!--End BibTex citation -->
 
 
   <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>. The icons are created by GPT4. 
-          </p>
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the of this website, we just ask that you link back to this page in the footer.
+              <br> This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>. 
+            </p>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  <!-- Statcounter tracking code -->
 
-    <!-- End of Statcounter Code -->
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
-  </body>
-  </html>
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
