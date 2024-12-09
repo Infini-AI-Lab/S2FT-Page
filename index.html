@@ -179,7 +179,19 @@
                 padding: 10px;
                 position: relative;
                 border: none;
-                /* Removes any borders from <th> */
+              }
+
+              /* Override any potential border between rows */
+              tr {
+                border-top: none;
+                border-bottom: none;
+              }
+
+              /* Target specific rows */
+              tr:first-child th,
+              tr:nth-child(2) th {
+                border-top: none;
+                border-bottom: none;
               }
 
               .line-container {
@@ -197,25 +209,25 @@
                 /* Black lines */
               }
             </style>
-            <table>
+            <table style="border-collapse: collapse; width: 100%; text-align: center;">
               <tr>
                 <th scope="col"></th>
                 <th colspan="2">
                   High Quality
                   <div class="line-container">
-                    <div class="line"></div>
+                    <div class="line" style="height: 2px;"></div>
                   </div>
                 </th>
                 <th colspan="2">
                   Efficient Training
                   <div class="line-container">
-                    <div class="line"></div>
+                    <div class="line" style="height: 2px;"></div>
                   </div>
                 </th>
                 <th colspan="3">
                   Scalable Serving
                   <div class="line-container">
-                    <div class="line"></div>
+                    <div class="line" style="height: 2px;"></div>
                   </div>
                 </th>
               </tr>
